@@ -9,10 +9,8 @@ package java8.javastudy.loop;
 public class Loop_Q2 {
 
     public static void main(String[] args) {
-        int c = 1;
         int a, b;
-
-
+        int c = 1;
 
 
         while (c == 1) {
@@ -26,10 +24,6 @@ public class Loop_Q2 {
                 System.out.println("5가 되는 조합은: "+"(" + a + "," + b + ")");
                 ++c;
             }
-
         }
-
-
-
     }
 }
