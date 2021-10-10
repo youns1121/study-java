@@ -6,14 +6,17 @@ package java8.javastudy.operator;
  */
 public class ex3_3 {
     public static void main(String[] args) {
-        int num = -1;
-        if(num > 0) {
-            System.out.println("양수");
-        }else if(num == 0){
-                System.out.println("0");
-        }else if(num < 0){
-            System.out.println("음수");
-        }
+        int num = 10;
+
+        System.out.println(num> 0 ? "양수" : (num < 0) ? "음수": 0);
+
+//        if(num > 0) {
+//            System.out.println("양수");
+//        }else if(num == 0){
+//                System.out.println("0");
+//        }else if(num < 0){
+//            System.out.println("음수");
+//        }
 
     }
 }
