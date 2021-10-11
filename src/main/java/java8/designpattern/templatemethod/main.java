@@ -8,7 +8,7 @@ package java8.designpattern.templatemethod;
 public class main {
     public static void main(String[] args) {
 //        Citizen h1 = new Citizen();
-        AbstSoldierConscriptionHelper helper = new SolderConscriptionHelperImpl();
+        SoldierConscriptionHelperImpl helper = new SoldierConscriptionHelperImpl();
         Solder solder = helper.conscription(); // 시민들을 징집해서 병사로 만들기
         solder.attack();
         solder.defense();
