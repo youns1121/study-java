@@ -1,4 +1,4 @@
-package java8.design.strategypattern;
+package java8.designpattern.strategy;
 
 /**
  * 전략 패턴(Strategy Pattern)
