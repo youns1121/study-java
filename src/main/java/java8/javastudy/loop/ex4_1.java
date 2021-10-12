@@ -17,7 +17,7 @@ public class ex4_1 {
          if(ch == 'x' || ch =='X'){ //3
              System.out.println(true); }
 
-         if(ch  >= '0' && ch <= 9){ //4
+         if(ch  >= '0' && ch <= '9'){ //4
              System.out.println(true); }
 
          if(ch >= 'a' && ch <= 'z' || ch >='A' && ch <= 'Z'){ //5
@@ -33,7 +33,7 @@ public class ex4_1 {
          System.out.println(powerOn);
 
          String str = "yes";//8
-         if(str == "yes"){
+         if(str.equals("yes") ){
              System.out.println(true);
          }
 
