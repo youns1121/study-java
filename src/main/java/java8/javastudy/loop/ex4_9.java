@@ -12,7 +12,7 @@ public class ex4_9 {
         int sum = 0;
 
         for(int i=0; i< str.length(); i++){
-            sum+=Integer.valueOf(str.charAt(i));
+            sum+=Integer.valueOf(str.charAt(i)); // 문자열 Integer 변환
         }
 
         System.out.println("sum = " + sum);
