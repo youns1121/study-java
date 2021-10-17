@@ -15,10 +15,15 @@ public class ex5_5 {
             int j = (int) (Math.random() * ballArr.length);
             int tmp = 0;
 
-
             tmp = ballArr[i];
             ballArr[i] = ballArr[j];
             ballArr[j] = tmp;
+
+          /*  before
+          tmp = j;
+          ballArr[j] = ballArr[i];
+          ballArr[i] = ballArr[tmp];
+           */
         }
 
         //배열 ballArr의 앞에서 3개의 수를 배열 ball3로 복사한다.
