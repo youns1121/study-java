@@ -15,16 +15,25 @@ public class ex5_9 {
 
         for(int i=0; i <star.length; i++){
             for(int j=0; j<star[i].length;j++){
-                System.out.println(star[i][j]);
+                System.out.print(star[i][j]);
             }
             System.out.println();
         }
+
+        System.out.println();
 
         for(int i=0; i< star.length;i++){
             for(int j=0; j < star[i].length; j++){
 
                 // 구현
-//                System.out.print(star[i][j]);
+                System.out.print(star[i][j]);
+                /*
+                3,0 | 2,0 | 1,0 | 0,0
+                3,1 | 2,1 | 1,1 | 0,1
+                3,2 | 2,2
+                3,3 | 2,3
+                3,4 | 2.4
+                 */
 
             }
         }
