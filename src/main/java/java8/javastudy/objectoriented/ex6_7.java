@@ -1,4 +1,4 @@
-package java8.javaex.objectoriented;
+package java8.javastudy.objectoriented;
 /*
 문제6-6에서 작성한 클래스메서드 getDistance()를 MyPoint클래스의 인스턴스메서
 드로 정의하시오.
