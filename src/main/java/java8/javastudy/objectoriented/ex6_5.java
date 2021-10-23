@@ -1,4 +1,4 @@
-package java8.javaex.objectoriented;
+package java8.javastudy.objectoriented;
 
 /**
  * 다음과 같은 실행결과를 얻도록 Student클래스에 생성자와 info()를 추가하시오.
