@@ -1,4 +1,4 @@
-package java8.javaex.objectoriented;
+package java8.javastudy.objectoriented;
 
 public class ex6_6 {
 
