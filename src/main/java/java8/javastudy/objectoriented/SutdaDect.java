@@ -8,6 +8,11 @@ package java8.javastudy.objectoriented;
  * 가 적힌 카드가 한 쌍씩 있고 숫자가 인 경우에는 둘 중의 한 장은 광 이 , 1, 3, 8 (Kwang)
  * 어야 한다 즉 의 인스턴스변수 의 값이 이어야 한다 . , SutdaCard isKwang true .
  */
+
+
+/*
+재 검토 필요
+ */
 public class SutdaDect {
 
     final int Card_NUM = 20;
@@ -17,13 +22,25 @@ public class SutdaDect {
         /*
                 (1) 배열 SutdaGoStop를 적절히 초기화 하시오.
          */
-        for(int i=0; i< cards.length; i++) {
-            for (int j = 1; j <= 10; j++) {
-                if (!(j == 1 || j == 3 || j == 8)) {
-                    cards[i] = new StudaGoStop(j, true);
-                }else cards[i] = new StudaGoStop(j, true);
-            }
 
+
+
+        int j=1;
+        int tmp = 1;
+
+        for(int i=0; i< cards.length; i++) {
+            if(!(j==1 || j==3|| j==8)) {
+                cards[i] = new StudaGoStop(j, false);
+            } else if(tmp==1){
+
+                cards[i] = new StudaGoStop(j, true);
+            } else cards[i] = new StudaGoStop(j, false);
+
+            j++;
+            if(j > 10){
+                j=1;
+                tmp++;
+            }
         }
     }
 }
@@ -42,6 +59,7 @@ class StudaGoStop{
     }
 
     // info() 대신 Object클래스의 toString()을 오버라이딩했디.
+    @Override
     public String toString(){
         return num + (isKwang ? "K":"");
     }
@@ -55,6 +73,8 @@ class Ex7_1{
         }
 
         System.out.println("");
+
+        System.out.println();
 
     }
 
