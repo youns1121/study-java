@@ -13,7 +13,7 @@ package java8.javastudy.objectoriented;
 /*
 재 검토 필요
  */
-public class SutdaDect {
+class SutdaDect {
 
     final int Card_NUM = 20;
     StudaGoStop[] cards = new StudaGoStop[Card_NUM];
