@@ -2,6 +2,10 @@ package java8.javastudy.objectoriented;
 
 // Ex7_1
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 /**
  *  섯다카드 장을 포함하는 섯다카드 한 벌 클래스 을 정의한 것이다 섯 20 (SutdaDeck ) .
  * 다카드 장을 담는 배열을 초기화하시오 단 섯다카드는 부터 까지의 숫자 20 SutdaCard . , 1 10
@@ -9,10 +13,6 @@ package java8.javastudy.objectoriented;
  * 어야 한다 즉 의 인스턴스변수 의 값이 이어야 한다 . , SutdaCard isKwang true .
  */
 
-
-/*
-재 검토 필요
- */
 class SutdaDect {
 
     final int Card_NUM = 20;
@@ -22,24 +22,23 @@ class SutdaDect {
         /*
                 (1) 배열 SutdaGoStop를 적절히 초기화 하시오.
          */
-
-
-
         int j=1;
-        int tmp = 1;
+        int cy=0;
+
+        List<Integer> kwang= new ArrayList<>();
 
         for(int i=0; i< cards.length; i++) {
-            if(!(j==1 || j==3|| j==8)) {
-                cards[i] = new StudaGoStop(j, false);
-            } else if(tmp==1){
-
+            int tmp = (int)(Math.random()*2);
+            if((j==1 || j==3|| j==8) && kwang.contains(j)==false && tmp == 1) {
+                    kwang.add(j);
+                    cards[i] = new StudaGoStop(j, true);
+            } else if((j==1 || j==3|| j==8) && kwang.contains(j)==false && tmp == 0 && cy==1){
                 cards[i] = new StudaGoStop(j, true);
-            } else cards[i] = new StudaGoStop(j, false);
-
+            }else cards[i] = new StudaGoStop(j, false);
             j++;
             if(j > 10){
                 j=1;
-                tmp++;
+                cy++;
             }
         }
     }
