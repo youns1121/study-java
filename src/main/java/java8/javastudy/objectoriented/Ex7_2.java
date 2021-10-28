@@ -3,6 +3,8 @@ package java8.javastudy.objectoriented;
 import java.util.ArrayList;
 import java.util.List;
 
+// 미구현
+
 /**
  * 문제7-1의 SutdaDeck클래스에 다음에 정의된 새로운 메서드를 추가하고 테스트 하시오.
  * [주의] Math.random()을 사용하는 경우 실행결과와 다를 수 있음.
@@ -38,23 +40,32 @@ class SutdaDect2 {
     }
     //(1) 위에 정의된 세 개의 메서드를 작성하시오.
 
-    /*Ex7_2
-    배열cards에 담긴 카드의 위치를 뒤섞는다.(Math.random()사용)
+    /**Ex7_2
+     *배열cards에 담긴 카드의 위치를 뒤섞는다.(Math.random()사용)
+     *
      */
     public void shuffle(){
         int cards = (int) (Math.random()*1);
     }
 
-    // 배열 cards에서 지정된 위치의 SutdaCard를 반환한다.
-    public StudaGoStop2 pick(int index){
-        StudaGoStop2 sutdaGoStop2 = new StudaGoStop2();
+    /**
+     * 배열 cards에서 지정된 위치의 StudaGoStop2를 반환한다.
+     */
 
-//        int cards =
+    public StudaGoStop2 pick(int cards){
 
-        return sutdaGoStop2;
+
+        return null;
+
+
+
+
     }
 
-    //배열 cards에서 임의의 위치의 SutdaCard를 반환한다.(Math.random()사용)
+    /**
+     * 배열 cards에서 임의의 위치의 StudaGoStop2를 반환한다.(Math.random()사용)
+     */
+
     public StudaGoStop2 pick(){
         StudaGoStop2 sutdaGoStop2 = new StudaGoStop2();
 
@@ -86,9 +97,11 @@ class Ex7_2{
     public static void main(String[] args) {
         SutdaDect2 deck = new SutdaDect2();
 
-        System.out.println(deck.pick(0));
-        System.out.println(deck.pick());
-        deck.shuffle();
+        System.out.println(deck.pick(0));     // 배열 cards에서 지정된 위치의 SutdaCard를 반환한다.
+
+        System.out.println(deck.pick());     //배열 cards에서 임의의 위치의 SutdaCard를 반환한다.(Math.random()사용)
+
+        deck.shuffle(); //배열 cards에 담긴 카드의 위치를 뒤섞는다.(Math.random()사용)
 
         for (int i = 0; i < deck.cards.length; i++) {
             System.out.print(deck.cards[i] + ", ");
