@@ -11,9 +11,10 @@ public class ArrayListEx1 {
         ArrayList list1 = new ArrayList(); //ArrayList 생성
         list1.add(new Integer(5));
         list1.add(new Integer(4));
-        list1.add(new Integer(3));
         list1.add(new Integer(2));
+        list1.add(new Integer(0));
         list1.add(new Integer(1));
+        list1.add(new Integer(3));
 
         ArrayList list2 = new ArrayList(list1.subList(1, 4)); // 1부터 4사이에 저장된 객체를 반환 -> 2,3,4
         print(list1, list2);
