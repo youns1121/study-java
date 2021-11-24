@@ -14,31 +14,23 @@ public class ArrayListHashMapEx2 {
         ArrayList<HashMap<String, Object>> list_3 = new ArrayList<HashMap<String, Object>>();
         HashMap<String, Object> map_1 = new HashMap<String, Object>();
         HashMap<String, Object> map_2 = new HashMap<String, Object>();
-        HashMap<String, Object> map_3 = new HashMap<String, Object>();
 
-        map_1.put("key_1","value_1");
-        map_1.put("key_2","value_2");
-        map_1.put("key_3", "value_3");
 
-        map_3.put("key_1","value_1");
-        map_3.put("key_2","value_2");
-        map_3.put("key_3","value_3");
+
+        for (int i =0; i <= 3; i++){
+            map_1.put("key_"+i, "value_"+i);
+        }
+
 
 
         list_1.add(map_1);
         list_2.add(map_1);
 
-
-
-//        list_1.add(map_2);
-        map_2.put("key_3", list_2);
-        map_2.put("key_1", list_1);
+        map_2.put("key_list1", list_1);
+        map_2.put("key_list2", list_2);
         list_3.add(map_2);
 
-   /*     for(int i=0; i<list_1.size(); i++) {
-            System.out.println(list_1.get(i).toString());
-        }
-*/
+
          for (int i = 0; i < list_3.size(); i++) {
              System.out.println(list_3.get(i));
          }
