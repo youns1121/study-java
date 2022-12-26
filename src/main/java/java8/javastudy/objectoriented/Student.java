@@ -15,9 +15,7 @@ public class Student {
         return kor + eng + math;
     }
 
-    public float getAverage(){
-
-        return getTotal()/3;
+    public Student() {
     }
 
     public Student(String name, int ban, int no, int kor, int eng, int math) {
@@ -29,6 +27,11 @@ public class Student {
         this.math = math;
     }
 
-    public Student() {
+    public String info(){
+        return name+", "+ban+", "+no+", "+kor+", "+eng+", "+math+", "+getTotal()+", "+getAverage();
+    }
+
+    public float getAverage(){
+        return getTotal()/3;
     }
 }
