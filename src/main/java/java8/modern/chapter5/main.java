@@ -1,6 +1,5 @@
 package java8.modern.chapter5;
 
-import java8.modern.chapter4.Dish;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +19,13 @@ public class main {
                 new Dish("salmon", false, 450, Dish.Type.FISH)
         );
 
+        List<Dish> specialMenu = Arrays.asList(
+                new Dish("seasonal fruit", true, 120, Dish.Type.OTHER),
+                new Dish("prawns", false, 300, Dish.Type.FISH),
+                new Dish("chicken", false, 400, Dish.Type.MEAT),
+                new Dish("french fries", true, 530, Dish.Type.OTHER)
+        );
+
         List<Dish> vegetarianDishes = menu.stream()
                 .filter(Dish::isVegetarian)
                 .collect(Collectors.toList());
@@ -35,5 +41,45 @@ public class main {
                 .filter(i -> i % 2 == 0)
                 .distinct()
                 .forEach(System.out::println);
+
+
+        List<Dish> filteredMenu = specialMenu.stream()
+                .filter(dish -> dish.getCalories() < 320)
+                .collect(Collectors.toList());
+
+        System.out.println(filteredMenu);
+
+        List<Dish> slicedMenu1 = specialMenu.stream()
+                .takeWhile(dish -> dish.getCalories() < 320)
+                .collect(Collectors.toList());
+
+        System.out.println("slicedMenu2 = " + slicedMenu1);
+
+        List<Dish> slicedMenu2 = specialMenu.stream()
+                .dropWhile(dish -> dish.getCalories() < 320)
+                .collect(Collectors.toList());
+        System.out.println("slicedMenu2 = " + slicedMenu2);
+
+        List<Dish> dishes = specialMenu.stream()
+                .filter(dish -> dish.getCalories() > 300)
+                .limit(3)
+                .collect(Collectors.toList());
+
+        System.out.println("dishes = " + dishes);
+
+        List<Dish> dishesSkip = menu.stream()
+                .filter(d -> d.getCalories() > 300)
+                .skip(2)
+                .collect(Collectors.toList());
+
+        System.out.println("dishesSkip = " + dishesSkip);
+
+        List<Dish> dishesMEAT = menu.stream()
+                .filter(d -> d.getType() == Dish.Type.MEAT)
+                .limit(2)
+                .collect(Collectors.toList());
+
+        System.out.println("dishesMEAT = " + dishesMEAT);
+
     }
 }
