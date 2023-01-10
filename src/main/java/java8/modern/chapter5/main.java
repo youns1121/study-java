@@ -26,6 +26,8 @@ public class main {
                 new Dish("french fries", true, 530, Dish.Type.OTHER)
         );
 
+        List<String> words = Arrays.asList("Modern", "Java", "In", "Action");
+
         List<Dish> vegetarianDishes = menu.stream()
                 .filter(Dish::isVegetarian)
                 .collect(Collectors.toList());
@@ -80,6 +82,18 @@ public class main {
                 .collect(Collectors.toList());
 
         System.out.println("dishesMEAT = " + dishesMEAT);
+
+        List<String> dishNames = menu.stream()
+                .map(Dish::getName)
+                .collect(Collectors.toList());
+
+        System.out.println("dishNames = " + dishNames);
+
+        List<Integer> wordLength = words.stream()
+                .map(String::length)
+                .collect(Collectors.toList());
+
+        System.out.println("wordLength = " + wordLength);
 
     }
 }
