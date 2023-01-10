@@ -1,6 +1,6 @@
 package java8.javastudy.inheritance;
 
-import javafx.scene.Parent;
+import java8.javastudy.objectoriented.Parent;
 
 /**
  * Parent 클래스를 상속받아 Child 클래스를 다음과 같이 작성했습니다.
