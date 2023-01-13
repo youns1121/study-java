@@ -153,5 +153,19 @@ public class main {
                         .map(j -> new int[]{i, j})
                 )
                 .collect(Collectors.toList());
+
+        if(menu.stream().anyMatch(Dish::isVegetarian)){
+            System.out.println("The menu is (somewhat vegetarian friendly!!");
+        }
+
+        boolean isHealthy = menu.stream()
+                .allMatch(dish -> dish.getCalories() < 1000);
+
+        System.out.println("isHealthy = " + isHealthy);
+
+        isHealthy = menu.stream()
+                .noneMatch(d -> d.getCalories() > 1000);
+
+        System.out.println("isHealthy = " + isHealthy);
     }
 }
