@@ -3,6 +3,7 @@ package java8.modern.chapter5;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -167,5 +168,21 @@ public class main {
                 .noneMatch(d -> d.getCalories() > 1000);
 
         System.out.println("isHealthy = " + isHealthy);
+
+        Optional<Dish> any = menu.stream()
+                .filter(Dish::isVegetarian)
+                .findAny();
+
+        System.out.println("any = " + any);
+
+        List<Integer> someNumbers = Arrays.asList(1, 2, 3, 4, 5);
+        Optional<Integer> first = someNumbers.stream()
+                .map(n -> n * n)
+                .filter(n -> n % 3 == 0)
+                .findFirst();
+
+        System.out.println("first = " + first);
+
+
     }
 }
