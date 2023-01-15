@@ -183,6 +183,24 @@ public class main {
 
         System.out.println("first = " + first);
 
+        Integer product = someNumbers.stream().reduce(1, (a, b) -> a * b);
+        System.out.println(product);
+        Integer reduce = someNumbers.stream().reduce(0, Integer::sum);
+        System.out.println("reduce = " + reduce);
 
+        Optional<Integer> max = someNumbers.stream().reduce(Integer::max);
+        System.out.println("max = " + max);
+
+        Optional<Integer> min = someNumbers.stream().reduce(Integer::min);
+        System.out.println("min = " + min);
+
+        Integer menuNums = menu.stream()
+                .map(d -> 1)
+                .reduce(0, (a, b) -> a + b);
+        System.out.println("menuNums = " + menuNums);
+
+        long count = menu.stream()
+                .count();
+        System.out.println("count = " + count);
     }
 }
