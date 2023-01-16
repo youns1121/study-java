@@ -1,6 +1,7 @@
 package java8.modern.chapter5;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,9 +26,9 @@ public class finalEx {
         /**
          * 1. 2011년에 일어난 모든 트랜잭션을 찾아 오름차순으로 정리하시오.
          */
-        List<String> ex1 = transactions.stream()
+        List<Transaction> ex1 = transactions.stream()
                 .filter(tr -> tr.getYear() == 2011)
-                .map(Transaction::toString)
+                .sorted(Comparator.comparing(Transaction::getValue))
                 .collect(Collectors.toList());
 
         System.out.println("ex1 = " + ex1);
@@ -42,12 +43,13 @@ public class finalEx {
         System.out.println("ex2 = " + ex2);
 
         /**
-         * 3. 케임브릿지에서 근무하는 모든 거래자를 찾아서 이름순으로 정렬하시오
+         * 3. 케임브리지에서 근무하는 모든 거래자를 찾아서 이름으로 정렬하시오.
          */
-        List<String> ex3 = transactions.stream()
-                .filter(tr -> tr.getTrader().getCity().equals("Cambridge"))
-                .map(tr -> tr.getTrader().getName())
-                .sorted()
+        List<Trader> ex3 = transactions.stream()
+                .map(Transaction::getTrader)
+                .filter(trader -> trader.getCity().equals("Cambridge"))
+                .distinct()
+                .sorted(Comparator.comparing(Trader::getName))
                 .collect(Collectors.toList());
 
         System.out.println("ex3 = " + ex3);
@@ -55,10 +57,11 @@ public class finalEx {
         /**
          * 4. 모든 거래자의 이름을 알파벳순으로 정렬해서 반환하시오
          */
-        List<String> ex4 = transactions.stream()
+        String ex4 = transactions.stream()
                 .map(tr -> tr.getTrader().getName())
+                .distinct()
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(Collectors.joining());
 
         System.out.println("ex4 = " + ex4);
 
@@ -73,10 +76,10 @@ public class finalEx {
         /**
          * 6. 케임브리지에 거주하는 거래자의 모든 트랜잭션값을 출력하시오
          */
-        List<Transaction> ex6 = transactions.stream()
-                .filter(tr -> tr.getTrader().getCity().equals("Cambridge"))
+        List<Integer> ex6 = transactions.stream()
+                .filter(tr -> "Cambridge".equals(tr.getTrader().getCity()))
+                .map(Transaction::getValue)
                 .collect(Collectors.toList());
-
         System.out.println("ex6 = " + ex6);
 
         /**
@@ -90,10 +93,8 @@ public class finalEx {
         /**
          * 8. 전체 트랜잭션 중 최솟값은 얼마인가?
          */
-        Optional<Integer> ex8 = transactions.stream()
-                .map(Transaction::getValue)
-                .reduce(Integer::min);
-
+        Optional<Transaction> ex8 = transactions.stream()
+                .min(Comparator.comparing(Transaction::getValue));
         System.out.println("ex8 = " + ex8);
 
 
