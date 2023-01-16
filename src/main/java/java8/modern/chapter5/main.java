@@ -4,7 +4,9 @@ package java8.modern.chapter5;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class main {
@@ -202,5 +204,31 @@ public class main {
         long count = menu.stream()
                 .count();
         System.out.println("count = " + count);
+
+        Integer calories = menu.stream()
+                .map(Dish::getCalories)
+                .reduce(0, Integer::sum);
+        System.out.println("calories = " + calories);
+
+        calories = menu.stream()
+                .mapToInt(Dish::getCalories)
+                .sum();
+        System.out.println("calories = " + calories);
+
+        IntStream intStream = menu.stream()
+                .mapToInt(Dish::getCalories);
+        Stream<Integer> stream = intStream.boxed();
+
+        System.out.println("intStream = " + intStream);
+        System.out.println("stream = " + stream);
+
+        OptionalInt maxCalories = menu.stream()
+                .mapToInt(Dish::getCalories)
+                .max();
+
+        System.out.println("maxCalories = " + maxCalories);
+
+        int elseMax = maxCalories.orElse(1);
+        System.out.println("elseMax = " + elseMax);
     }
 }
