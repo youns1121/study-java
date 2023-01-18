@@ -230,5 +230,13 @@ public class main {
 
         int elseMax = maxCalories.orElse(1);
         System.out.println("elseMax = " + elseMax);
+
+        IntStream evenNumbers = IntStream.rangeClosed(1, 100)
+                .filter(n -> n % 2 == 0);
+        System.out.println("evenNumbers = " + evenNumbers.count());
+
+        evenNumbers = IntStream.range(1, 100)
+                .filter(n -> n % 2 == 0);
+        System.out.println("evenNumbers = " + evenNumbers.count());
     }
 }
