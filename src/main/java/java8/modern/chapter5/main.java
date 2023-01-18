@@ -257,6 +257,13 @@ public class main {
                         .filter(t -> t[2] % 1 == 0));
         pythagoreanTriples2.limit(5)
                 .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+        /**
+         * 5.8.1 값으로 스트림 만들기
+         */
+        Stream<String> streamValues= Stream.of("Modern", "Java", "In ", "Action");
+        streamValues.map(String::toUpperCase).forEach(System.out::println);
+        Stream<String> emptyStream = Stream.empty();
+        System.out.println("emptyStream = " + emptyStream.collect(Collectors.toList()));
 
 
     }
