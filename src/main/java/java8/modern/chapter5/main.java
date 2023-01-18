@@ -220,7 +220,7 @@ public class main {
         Stream<Integer> stream = intStream.boxed();
 
         System.out.println("intStream = " + intStream);
-        System.out.println("stream = " + stream);
+        System.out.println("stream = " + stream.collect(Collectors.toList()));
 
         OptionalInt maxCalories = menu.stream()
                 .mapToInt(Dish::getCalories)
@@ -238,5 +238,26 @@ public class main {
         evenNumbers = IntStream.range(1, 100)
                 .filter(n -> n % 2 == 0);
         System.out.println("evenNumbers = " + evenNumbers.count());
+
+        Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed()
+                .flatMap(a ->
+                        IntStream.rangeClosed(a, 100)
+                                .filter(b -> Math.sqrt(a * a + b * b) % 1 == 0)
+                                .mapToObj(b -> new int[]{a, b, (int) Math.sqrt(a * a + b * b)})
+                );
+
+        pythagoreanTriples.limit(5)
+                .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+
+        System.out.println("");
+        Stream<double[]> pythagoreanTriples2 = IntStream.rangeClosed(1, 100).boxed()
+                .flatMap(a -> IntStream.rangeClosed(a, 100)
+                        .mapToObj(
+                                b -> new double[]{a, b, Math.sqrt(a * a + b * b)})
+                        .filter(t -> t[2] % 1 == 0));
+        pythagoreanTriples2.limit(5)
+                .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+
+
     }
 }
