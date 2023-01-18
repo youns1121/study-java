@@ -265,6 +265,19 @@ public class main {
         Stream<String> emptyStream = Stream.empty();
         System.out.println("emptyStream = " + emptyStream.collect(Collectors.toList()));
 
+        /**
+         * 5.8.2 null이 될 수 있는 객체로 스트림 만들기
+         */
+        String homeValue = System.getProperty("home");
+        Stream<String> homeValueStream = homeValue == null ? Stream.empty() : Stream.of("home");
+        System.out.println("homeValueStream = " + homeValueStream.collect(Collectors.toList()));
+
+        homeValueStream = Stream.ofNullable(System.getProperty("home"));
+        System.out.println("homeValueStream = " + homeValueStream.collect(Collectors.toList()));
+
+        Stream<String> values = Stream.of("config", "home", "user")
+                .flatMap(key -> Stream.ofNullable(System.getProperty(key)));
+        System.out.println("values = " + values.collect(Collectors.toList()));
 
     }
 }
