@@ -4,12 +4,13 @@ package java8.modern.chapter6;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.*;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Dish> menu = Arrays.asList(
+        List<Dish> menu = asList(
                 new Dish("pork", false, 800, Dish.Type.MEAT),
                 new Dish("beef", false, 700, Dish.Type.MEAT),
                 new Dish("chicken", false, 400, Dish.Type.MEAT),
@@ -105,5 +106,36 @@ public class Main {
                 })
         );
         System.out.println("dishesByCaloricLevel = " + dishesByCaloricLevel);
+
+        /**
+         * 6.3.1 그룹화된 요소 조작
+         */
+        Map<Dish.Type, List<Dish>> caloricDishesByType = menu.stream()
+                .filter(dish -> dish.getCalories() > 500)
+                .collect(groupingBy(Dish::getType));
+        System.out.println("caloricDishesByType = " + caloricDishesByType);
+
+        caloricDishesByType = menu.stream()
+                .collect(groupingBy(Dish::getType, filtering(dish -> dish.getCalories() > 500, toList())));
+        System.out.println("caloricDishesByType = " + caloricDishesByType);
+
+        Map<Dish.Type, List<String>> dishNamesByType = menu.stream()
+                .collect(groupingBy(Dish::getType, mapping(Dish::getName, toList())));
+        System.out.println("dishNamesByType = " + dishNamesByType);
+
+        Map<String, List<String>> dishTags = new HashMap<>();
+        dishTags.put("pork", asList("greasy", "salty"));
+        dishTags.put("beef", asList("salty", "roasted"));
+        dishTags.put("chicken", asList("fried", "crisp"));
+        dishTags.put("french fries", asList("greasy", "fried"));
+        dishTags.put("rice", asList("light", "natural"));
+        dishTags.put("season fruit", asList("fresh", "natural"));
+        dishTags.put("pizza", asList("tasty", "salty"));
+        dishTags.put("prawns", asList("tasty", "roasted"));
+        dishTags.put("salmon", asList("delicious", "fresh"));
+
+        Map<Dish.Type, Set<String>> dishNamesBySetType = menu.stream()
+                .collect(groupingBy(Dish::getType, flatMapping(dish -> dishTags.get(dish.getName()).stream(), toSet())));
+        System.out.println("dishNamesBySetType = " + dishNamesBySetType);
     }
 }
