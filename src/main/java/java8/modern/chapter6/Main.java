@@ -89,5 +89,21 @@ public class Main {
         List<String> collect1 = menu.stream().map(Dish::getName).collect(toList());
         System.out.println("collect = " + collect);
         System.out.println("collect1 = " + collect1);
+
+        /**
+         * 6.3 그룹화
+         */
+
+        Map<Dish.Type, List<Dish>> dishByType = menu.stream().collect(groupingBy(Dish::getType));
+        System.out.println("dishByType = " + dishByType);
+
+        Map<CaloricLevel, List<Dish>> dishesByCaloricLevel = menu.stream().collect(
+                groupingBy(dish -> {
+                    if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                    else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                    else return CaloricLevel.FAT;
+                })
+        );
+        System.out.println("dishesByCaloricLevel = " + dishesByCaloricLevel);
     }
 }
