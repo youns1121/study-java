@@ -153,5 +153,48 @@ public class Main {
                 )
         );
         System.out.println("dishesByTypeCaloricLevel = " + dishesByTypeCaloricLevel);
+
+        /**
+         * 6.3.3 서브그룹으로 데이터 수집
+         */
+        Map<Dish.Type, Long> typesCount = menu.stream().collect(
+                groupingBy(Dish::getType, counting()));
+        System.out.println("typesCount = " + typesCount);
+
+        Map<Dish.Type, Optional<Dish>> mostCaloricByTypeOptional = menu.stream()
+                .collect(groupingBy(Dish::getType, maxBy(comparingInt(Dish::getCalories))));
+        System.out.println("mostCaloricByTypeOptional = " + mostCaloricByTypeOptional);
+
+        Map<Dish.Type, Dish> mostCaloricByType = menu.stream()
+                .collect(groupingBy(Dish::getType,
+                        collectingAndThen(maxBy(comparingInt(Dish::getCalories)),
+                        Optional::get)));
+        System.out.println("mostCaloricByType = " + mostCaloricByType);
+
+        Map<Dish.Type, Integer> totalCaloriesByType = menu.stream().collect(groupingBy(Dish::getType,
+                summingInt(Dish::getCalories)));
+        System.out.println("totalCaloriesByType = " + totalCaloriesByType);
+
+        Map<Dish.Type, Set<CaloricLevel>> caloricLevelsByType = menu.stream().collect(
+                groupingBy(Dish::getType, mapping(dish -> {
+                            if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                            else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                            else return CaloricLevel.FAT;
+                        },
+                        toSet())));
+        System.out.println("caloricLevelsByType = " + caloricLevelsByType);
+
+        caloricLevelsByType = menu.stream().collect(
+                groupingBy(Dish::getType, mapping(dish -> {
+                            if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                            else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                            else return CaloricLevel.FAT;
+                        },
+                        toCollection(HashSet::new) )));
+        System.out.println("caloricLevelsByType = " + caloricLevelsByType);
+
+
+
+
     }
 }
