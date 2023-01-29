@@ -193,7 +193,34 @@ public class Main {
                         toCollection(HashSet::new) )));
         System.out.println("caloricLevelsByType = " + caloricLevelsByType);
 
+        /**
+         * 6.4 분할
+         */
 
+        Map<Boolean, List<Dish>> partitionedMenu = menu.stream().collect(partitioningBy(Dish::isVegetarian));
+        System.out.println("partitionedMenu = " + partitionedMenu);
+
+        /**
+         * 6.4.1 분할의 장점
+         */
+        Map<Boolean, Map<Dish.Type, List<Dish>>> vegetarianDishesByType = menu.stream()
+                .collect(
+                        partitioningBy(Dish::isVegetarian, groupingBy(Dish::getType)));
+
+        System.out.println("vegetarianDishesByType = " + vegetarianDishesByType);
+
+        Map<Boolean, Dish> mostCaloricPartitionedByVegetarian = menu.stream().collect(
+                partitioningBy(Dish::isVegetarian,
+                        collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get))
+        );
+        System.out.println("mostCaloricPartitionedByVegetarian = " + mostCaloricPartitionedByVegetarian);
+
+        Map<Boolean, Map<Boolean, List<Dish>>> quiz1 = menu.stream().collect(partitioningBy(Dish::isVegetarian, partitioningBy(d -> d.getCalories() > 500)));
+        System.out.println("quiz1 = " + quiz1);
+        //컴파일 되지 않음
+        //R collect2 = menu.stream().collect(partitioningBy(Dish::isVegetarian, partitioningBy(Dish::getType)));
+        Map<Boolean, Long> quiz3 = menu.stream().collect(partitioningBy(Dish::isVegetarian, counting()));
+        System.out.println("quiz3 = " + quiz3);
 
 
     }
