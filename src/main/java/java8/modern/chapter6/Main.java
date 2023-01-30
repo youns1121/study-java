@@ -3,6 +3,7 @@ package java8.modern.chapter6;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.Arrays.*;
 import static java.util.Comparator.comparingInt;
@@ -223,5 +224,26 @@ public class Main {
         System.out.println("quiz3 = " + quiz3);
 
 
+
+
+
+    }
+    /**
+     * 6.4.2 숫자를 소수와 비소수로 분할하기
+     */
+    public boolean isPrimeV1(int candidate) {
+        return IntStream.range(2, candidate).noneMatch(i -> candidate % i == 0);
+    }
+
+    public boolean isPrimeV2(int candidate) {
+        int candidateRoot = (int) Math.sqrt((double)candidate);
+        return IntStream.rangeClosed(2, candidateRoot)
+                .noneMatch(i -> candidate % i == 0);
+    }
+
+    public Map<Boolean, List<Integer>> partitionPrimes(int n) {
+        return IntStream.rangeClosed(2, n).boxed()
+                .collect(
+                        partitioningBy(candidate -> isPrimeV2(candidate)));
     }
 }
