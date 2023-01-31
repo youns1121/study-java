@@ -223,8 +223,13 @@ public class Main {
         Map<Boolean, Long> quiz3 = menu.stream().collect(partitioningBy(Dish::isVegetarian, counting()));
         System.out.println("quiz3 = " + quiz3);
 
-
-
+        /**
+         * 6.5.2 응용하기
+         */
+        List<Dish> dishes = menu.stream().collect(new ToListCollector<Dish>());
+        System.out.println("dishes = " + dishes);
+        List<Dish> dishes2 = menu.stream().collect(toList());
+        System.out.println("dishes2 = " + dishes2);
 
 
     }
