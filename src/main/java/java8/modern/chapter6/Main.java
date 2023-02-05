@@ -232,6 +232,8 @@ public class Main {
         System.out.println("dishes2 = " + dishes2);
 
 
+
+
     }
     /**
      * 6.4.2 숫자를 소수와 비소수로 분할하기
@@ -248,7 +250,21 @@ public class Main {
 
     public Map<Boolean, List<Integer>> partitionPrimes(int n) {
         return IntStream.rangeClosed(2, n).boxed()
-                .collect(
-                        partitioningBy(candidate -> isPrimeV2(candidate)));
+                .collect(partitioningBy(candidate -> isPrimeV2(candidate)));
+    }
+
+    /**
+     * 6.6.1 소수로만 나누기
+     */
+    public static boolean isPrimeV3(List<Integer> primes, int candidate){
+        return primes.stream().noneMatch(i -> candidate % i == 0);
+    }
+
+    public static boolean isPrimeV4(List<Integer> primes, int candidate){
+        int candidateRoot = (int) Math.sqrt((double) candidate);
+        return primes.stream()
+                .takeWhile(i -> i <= candidateRoot)
+                .noneMatch(i -> candidate % i == 0);
+
     }
 }
