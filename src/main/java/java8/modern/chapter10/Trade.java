@@ -2,7 +2,7 @@ package java8.modern.chapter10;
 
 public class Trade {
 
-    private enum Type {BUY, SELL}
+    public enum Type {BUY, SELL}
 
     private Type type;
 
