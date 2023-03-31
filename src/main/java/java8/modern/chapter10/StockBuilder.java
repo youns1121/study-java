@@ -1,24 +1,13 @@
 package java8.modern.chapter10;
 
 public class StockBuilder {
+    public Stock stock = new Stock();
 
-    private final MethodChainingOrderBuilder builder;
-
-    private final Trade trade;
-
-    private final Stock stock = new Stock();
-
-    public StockBuilder(MethodChainingOrderBuilder builder, Trade trade, String symbol) {
-        this.builder = builder;
-        this.trade = trade;
+    public void symbol(String symbol) {
         stock.setSymbol(symbol);
-
     }
 
-    public TradeBuilderWithStock on(String market) {
+    public void market(String market) {
         stock.setMarket(market);
-        trade.setStock(stock);
-        return new TradeBuilderWithStock(builder, trade);
-
     }
 }

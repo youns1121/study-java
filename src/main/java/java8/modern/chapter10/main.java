@@ -1,7 +1,6 @@
 package java8.modern.chapter10;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -39,8 +38,8 @@ public class main {
         int errorCount = 0;
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
         String line = bufferedReader.readLine();
-        while ( line != null && errorCount < 40) {
-            if(line.startsWith("ERROR")) {
+        while (line != null && errorCount < 40) {
+            if (line.startsWith("ERROR")) {
                 errors.add(line);
                 errorCount++;
             }
@@ -54,21 +53,7 @@ public class main {
                 .limit(40)
                 .collect(Collectors.toList());
 
-        /**
-         * 10.3.1 메서드 체인
-         */
-
-        MethodChainingOrderBuilder
-                .forCustomer("BigBank")
-                .buy(80)
-                .stock("IBM")
-                .on("NYSE")
-                .at(125.00)
-                .sell(50)
-                .stock("GOOGLE")
-                .on("NASDAQ")
-                .at(375.00)
-                .end();
-
     }
+
+
 }
