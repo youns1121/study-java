@@ -1,21 +1,19 @@
 package java8.modern.chapter10;
 
-import java.util.function.Consumer;
-
 public class TradeBuilder {
     public Trade trade = new Trade();
 
-    public void quantity(int quantity) {
+    public TradeBuilder quantity(int quantity) {
         trade.setQuantity(quantity);
+        return this;
     }
 
-    public void price(double price) {
+    public TradeBuilder at(double price) {
         trade.setPrice(price);
+        return this;
     }
 
-    public void stock(Consumer<StockBuilder> consumer) {
-        StockBuilder builder = new StockBuilder();
-        consumer.accept(builder);
-        trade.setStock(builder.stock);
+    public StockBuilder stock(String symbol) {
+        return new StockBuilder(this, trade, symbol);
     }
 }
