@@ -1,5 +1,8 @@
 package headfirst.designpatterns.observer;
 
 public interface Observer {
-    public void update(float temp, float humidity, float pressure);
+    /**
+     * PULL 방식
+     */
+    public void update();
 }
