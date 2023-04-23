@@ -1,27 +1,29 @@
 package headfirst.designpatterns.factory.pizza;
 
-import java.util.ArrayList;
-import java.util.List;
+import headfirst.designpatterns.factory.pizza.cheese.Cheese;
+import headfirst.designpatterns.factory.pizza.clams.Clams;
+import headfirst.designpatterns.factory.pizza.dough.Dough;
+import headfirst.designpatterns.factory.pizza.pepperoni.Pepperoni;
+import headfirst.designpatterns.factory.pizza.sauce.Sauce;
+import headfirst.designpatterns.factory.pizza.veggie.Veggies;
 
 public abstract class Pizza {
 
     protected String name;
 
-    protected String dough;
+    protected Dough dough;
 
-    protected String sauce;
+    protected Sauce sauce;
 
-    protected List<String> toppings = new ArrayList<>();
+    protected Veggies veggies[];
 
-    public void prepare() {
-        System.out.println("준비 중: " + name);
-        System.out.println("도우를 돌리는 중...");
-        System.out.println("소스를 뿌리는 중...");
-        System.out.println("토핑을 올리는 중: ");
-        for (String topping : toppings) {
-            System.out.println(" " + topping);
-        }
-    }
+    protected Cheese cheese;
+
+    protected Pepperoni pepperoni;
+
+    protected Clams clams;
+
+    public abstract void prepare();
 
     public void bake() {
         System.out.println("175도에서 25분 간 굽기");
@@ -35,7 +37,16 @@ public abstract class Pizza {
         System.out.println("상자에 피자 담기");
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza{}";
     }
 }
