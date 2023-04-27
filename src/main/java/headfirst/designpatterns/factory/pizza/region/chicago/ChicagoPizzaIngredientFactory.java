@@ -7,7 +7,6 @@ import headfirst.designpatterns.factory.pizza.clams.FrozenClams;
 import headfirst.designpatterns.factory.pizza.dough.Dough;
 import headfirst.designpatterns.factory.pizza.dough.ThickCrustDough;
 import headfirst.designpatterns.factory.pizza.factory.PizzaIngredientFactory;
-import headfirst.designpatterns.factory.pizza.newyork.*;
 import headfirst.designpatterns.factory.pizza.pepperoni.Pepperoni;
 import headfirst.designpatterns.factory.pizza.pepperoni.SlicedPepperoni;
 import headfirst.designpatterns.factory.pizza.sauce.PlumTomatoSauce;
