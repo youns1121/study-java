@@ -1,6 +1,13 @@
-package headfirst.designpatterns.command;
+package headfirst.designpatterns.command.garagedoor;
 
 public class GarageDoor {
+
+    public GarageDoor() {
+    }
+
+    public GarageDoor(String value) {
+        System.out.println(value);
+    }
 
     public void up() {
         System.out.println("올라갔습니다.");

@@ -1,5 +1,7 @@
 package headfirst.designpatterns.command;
 
+import headfirst.designpatterns.command.garagedoor.GarageDoor;
+
 public class RemoteControlTest {
     public static void main(String[] args) {
         SimpleRemoteControl remote = new SimpleRemoteControl();
