@@ -1,4 +1,4 @@
-package headfirst.designpatterns.command;
+package headfirst.designpatterns.command.light;
 
 public class Light {
 

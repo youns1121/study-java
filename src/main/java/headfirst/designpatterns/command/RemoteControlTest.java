@@ -1,6 +1,8 @@
 package headfirst.designpatterns.command;
 
 import headfirst.designpatterns.command.garagedoor.GarageDoor;
+import headfirst.designpatterns.command.light.Light;
+import headfirst.designpatterns.command.light.LightOnCommand;
 
 public class RemoteControlTest {
     public static void main(String[] args) {
