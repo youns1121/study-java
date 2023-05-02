@@ -15,4 +15,9 @@ public class CeilingFanOnCommand implements Command {
         ceilingFan.getValue();
         ceilingFan.speed("HIGH");
     }
+
+    @Override
+    public void undo() {
+        ceilingFan.off();
+    }
 }

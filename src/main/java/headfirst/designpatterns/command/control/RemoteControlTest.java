@@ -1,5 +1,6 @@
-package headfirst.designpatterns.command;
+package headfirst.designpatterns.command.control;
 
+import headfirst.designpatterns.command.GarageDoorOpenCommand;
 import headfirst.designpatterns.command.garagedoor.GarageDoor;
 import headfirst.designpatterns.command.light.Light;
 import headfirst.designpatterns.command.light.LightOnCommand;

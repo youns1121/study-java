@@ -13,10 +13,12 @@ public class Light {
     }
 
     public void on() {
+        getValue();
         System.out.println("조명 ON");
     }
 
     public void off() {
+        getValue();
         System.out.println("조명 OFF");
     }
 

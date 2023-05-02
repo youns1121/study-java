@@ -1,11 +1,15 @@
-package headfirst.designpatterns.command;
+package headfirst.designpatterns.command.control;
 
-public class RemoteControl {
+import headfirst.designpatterns.command.Command;
+import headfirst.designpatterns.command.NoCommand;
+
+public class RemoteControlWithUndo {
 
     public Command[] onCommands;
     public Command[] offCommands;
+    Command undoCommand;
 
-    public RemoteControl() {
+    public RemoteControlWithUndo() {
         this.onCommands = new Command[7];
         this.offCommands = new Command[7];
 
@@ -14,6 +18,7 @@ public class RemoteControl {
             this.onCommands[i] = noCommand;
             this.offCommands[i] = noCommand;
         }
+        undoCommand = noCommand;
     }
 
     public void setCommand(int slot, Command onCommand, Command offCommand) {
@@ -22,13 +27,17 @@ public class RemoteControl {
     }
 
     public void onButtonWasPushed(int slot) {
-//        if (onCommands[slot] != null) {
-            onCommands[slot].execute();
-//        }
+        onCommands[slot].execute();
+        undoCommand = onCommands[slot];
     }
 
     public void offButtonWasPushed(int slot) {
         offCommands[slot].execute();
+        undoCommand = offCommands[slot];
+    }
+
+    public void undoButtonWasPushed() {
+        undoCommand.undo();
     }
 
     @Override

@@ -1,4 +1,6 @@
-package headfirst.designpatterns.command;
+package headfirst.designpatterns.command.control;
+
+import headfirst.designpatterns.command.Command;
 
 public class SimpleRemoteControl {
 

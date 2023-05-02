@@ -1,7 +1,6 @@
 package headfirst.designpatterns.command.light;
 
 import headfirst.designpatterns.command.Command;
-import headfirst.designpatterns.command.light.Light;
 
 public class LightOnCommand implements Command {
 
@@ -13,7 +12,11 @@ public class LightOnCommand implements Command {
 
     @Override
     public void execute() {
-        light.getValue();
         light.on();
+    }
+
+    @Override
+    public void undo() {
+        light.off();
     }
 }
