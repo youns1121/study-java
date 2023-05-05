@@ -44,7 +44,8 @@ public class RemoteControlWithUndo {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\n------------리모컨-------------\n");
-        for (int i = 0; i < onCommands.length; i++) {
+        int length = onCommands.length;
+        for (int i = 0; i < length; i++) {
             stringBuilder.append("[slot ")
                     .append(i)
                     .append("] ")
@@ -53,6 +54,11 @@ public class RemoteControlWithUndo {
                     .append(offCommands[i].getClass().getSimpleName())
                     .append("\n");
         }
+        stringBuilder
+                .append("[undo] ")
+                .append(undoCommand.getClass().getSimpleName())
+                .append("\n");
+
         return stringBuilder.toString();
     }
 }

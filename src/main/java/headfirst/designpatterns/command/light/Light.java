@@ -5,7 +5,6 @@ public class Light {
     public String value;
 
     public Light(String value) {
-        System.out.println(value);
         this.value = value;
     }
 
