@@ -1,27 +1,33 @@
 package headfirst.designpatterns.command;
 
+import headfirst.designpatterns.command.cellingfan.CeilingFan;
+import headfirst.designpatterns.command.cellingfan.CeilingFanHighCommand;
+import headfirst.designpatterns.command.cellingfan.CeilingFanMediumCommand;
+import headfirst.designpatterns.command.cellingfan.CeilingFanOffCommand;
 import headfirst.designpatterns.command.control.RemoteControlWithUndo;
-import headfirst.designpatterns.command.light.Light;
-import headfirst.designpatterns.command.light.LightOffCommand;
-import headfirst.designpatterns.command.light.LightOnCommand;
+
 
 public class RemoteLoader {
     public static void main(String[] args) {
         RemoteControlWithUndo remoteControl = new RemoteControlWithUndo();
 
-        Light livingRoomLight = new Light("거실");
+        CeilingFan ceilingFan = new CeilingFan("거실");
 
-        LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
-        LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+        CeilingFanMediumCommand ceilingFanMedium = new CeilingFanMediumCommand(ceilingFan);
 
-        remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
+        CeilingFanHighCommand ceilingFanHigh = new CeilingFanHighCommand(ceilingFan);
+
+        CeilingFanOffCommand ceilingFanOff = new CeilingFanOffCommand(ceilingFan);
+
+        remoteControl.setCommand(0, ceilingFanMedium, ceilingFanOff);
+        remoteControl.setCommand(1, ceilingFanHigh, ceilingFanOff);
 
         remoteControl.onButtonWasPushed(0);
         remoteControl.offButtonWasPushed(0);
         System.out.println(remoteControl);
         remoteControl.undoButtonWasPushed();
-        remoteControl.offButtonWasPushed(0);
-        remoteControl.onButtonWasPushed(0);
+
+        remoteControl.onButtonWasPushed(1);
         System.out.println(remoteControl);
         remoteControl.undoButtonWasPushed();
 
