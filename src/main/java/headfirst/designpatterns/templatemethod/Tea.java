@@ -2,6 +2,13 @@ package headfirst.designpatterns.templatemethod;
 
 public class Tea {
 
+    void prepareRecipe() {
+        boilWater();
+        steepTeaBag();
+        pourInCup();
+        addLemon();
+    }
+
     public void boilWater() {
         System.out.println("물 끓이는 중");
     }
