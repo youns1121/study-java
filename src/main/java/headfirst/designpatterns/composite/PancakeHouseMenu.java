@@ -1,12 +1,11 @@
 package headfirst.designpatterns.composite;
 
-import headfirst.designpatterns.composite.Iterator.Iterator;
-import headfirst.designpatterns.composite.Iterator.PancakeHouseIterator;
+import java.util.Iterator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PancakeHouseMenu {
+public class PancakeHouseMenu implements Menu{
     List<MenuItem> menuItems;
 
     public PancakeHouseMenu() {
@@ -25,8 +24,8 @@ public class PancakeHouseMenu {
 
     }
 
-    public Iterator createIterator() {
-        return new PancakeHouseIterator(menuItems);
+    public Iterator<MenuItem> createIterator() {
+        return menuItems.iterator();
     }
 
 //    public List<MenuItem> getMenuItems() {

@@ -1,19 +1,20 @@
 package headfirst.designpatterns.composite;
 
-import headfirst.designpatterns.composite.Iterator.Iterator;
+import java.util.Iterator;
 
 public class Waitress {
-    PancakeHouseMenu pancakeHouseMenu;
-    DinerMenu dinerMenu;
 
-    public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu) {
+    Menu pancakeHouseMenu;
+    Menu dinerMenu;
+
+    public Waitress(Menu pancakeHouseMenu, Menu dinerMenu) {
         this.pancakeHouseMenu = pancakeHouseMenu;
         this.dinerMenu = dinerMenu;
     }
 
     public void printMenu() {
-        Iterator pancakeIterator = pancakeHouseMenu.createIterator();
-        Iterator dinerIterator = dinerMenu.createIterator();
+        Iterator<MenuItem> pancakeIterator = pancakeHouseMenu.createIterator();
+        Iterator<MenuItem> dinerIterator = dinerMenu.createIterator();
 
         System.out.println("메뉴\n----\n아침 메뉴");
         printMenu(pancakeIterator);
@@ -23,10 +24,13 @@ public class Waitress {
 
     private void printMenu(Iterator iterator) {
         while (iterator.hasNext()) {
-            MenuItem menuItem = iterator.next();
-            System.out.print(menuItem.getName() + ", ");
-            System.out.print(menuItem.getPrice() + " -- ");
-            System.out.println(menuItem.getDescription());
+            MenuItem menuItem = (MenuItem) iterator.next();
+            if (menuItem != null) {
+                System.out.print(menuItem.getName() + ", ");
+                System.out.print(menuItem.getPrice() + " -- ");
+                System.out.println(menuItem.getDescription());
+            }
+
         }
     }
 }

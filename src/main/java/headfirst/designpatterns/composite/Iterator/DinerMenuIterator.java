@@ -1,8 +1,9 @@
 package headfirst.designpatterns.composite.Iterator;
 
 import headfirst.designpatterns.composite.MenuItem;
+import java.util.Iterator;
 
-public class DinerMenuIterator implements Iterator{
+public class DinerMenuIterator implements Iterator<MenuItem>{
 
     MenuItem[] items;
     int position = 0;
@@ -25,5 +26,10 @@ public class DinerMenuIterator implements Iterator{
         MenuItem menuItem = items[position];
         position += 1;
         return menuItem;
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("메뉴 항목은 지우면 안 됩니다.");
     }
 }
